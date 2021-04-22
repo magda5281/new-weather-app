@@ -46,3 +46,6 @@ ul {
 a.farenheit-link {
   text-decoration: none;
 }
+#description {
+  text-transform: capitalize;
+}
