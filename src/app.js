@@ -93,4 +93,3 @@ let celciusLinkElement=document.querySelector("#celcius-link");
 celciusLinkElement.addEventListener("click", dispalyCelsiusTemperature);
 
 
-search("warsaw");
