@@ -43,9 +43,14 @@ ul {
   vertical-align: text-top;
   line-height: 60px;
 }
-a.farenheit-link {
+a {
   text-decoration: none;
 }
 #description {
   text-transform: capitalize;
+}
+
+.weather-temperature .active {
+  color: #202124;
+  cursor: default;
 }
