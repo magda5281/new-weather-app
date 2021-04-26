@@ -54,3 +54,22 @@ a {
   color: #202124;
   cursor: default;
 }
+.weather-forecast {
+  margin-top: 20px;
+  color: black;
+}
+.forecast-column {
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+.forecast-day {
+  font-size: 16px;
+  opacity: 0.6;
+}
+.weather-forecast-temperature-max {
+  font-size: 13px;
+}
+.weather-forecast-temperature-min {
+  font-size: 13px;
+  opacity: 0.6;
+}

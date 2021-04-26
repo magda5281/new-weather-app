@@ -22,7 +22,7 @@ function formatDate(timestamp){
 
     return `${day}, ${date} ${month} ${year}, ${hours}:${minutes}` 
 }
-
+ 
 
 function displayTemperature(response){
 let temperatureElement=document.querySelector("#temperature");
@@ -44,6 +44,8 @@ mainIconElement.setAttribute ("src", `http://openweathermap.org/img/wn/${respons
 mainIconElement.setAttribute("alt", response.data.weather[0].description);
 
 celciusTemperature = Math.round(response.data.main.temp);
+
+
 
 }
 
