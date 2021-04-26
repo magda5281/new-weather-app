@@ -59,6 +59,8 @@ a {
   color: black;
 }
 .forecast-column {
+  width: 12%;
+  margin-right: 5px;
   background-color: #f8f9fa;
   border-radius: 10px;
 }
