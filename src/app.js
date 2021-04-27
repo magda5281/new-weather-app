@@ -28,8 +28,42 @@ function formatDay(timestamp){
    let day = date.getDay();
   let days = ["Sun","Mon", "Tue","Wed","Thu","Fri","Sat"]
   return days[day];
-
 }
+
+//1 create a function responsible for displaying hourly weather 
+function displayHourlyWeather(){
+//2 select html element to disply hourly weather 
+  let hourlyWeatherElement = document.querySelector("#hourly-weather")
+//3 create empty variable that will hold html code 
+  let hourlyWeatherElementHTML ="";
+//5 create an array with hours you want to loop through 
+  let hours =["06:00", "10:00", "14:00","18:00","22:00", "02:00"];
+//6 loop through the arrey with for each function; and place the hourlyWeatherElementHTML is sent to function(hour)
+hours.forEach(function(hour) {
+
+//4 place html code in new variable  
+  hourlyWeatherElementHTML =  hourlyWeatherElementHTML + `
+    <div class="byHour col-2 border-end-1" align="center">
+        <ul class="list-unstyled list-group">
+          <li class="list-group-item border-0 py-1 hour " 
+          style="font-size:16px"
+          id="hour">
+          ${hour}
+          </li>
+          <li class="list-group-item border-0 py-1"> ☀️</li>
+          <li class="list-group-item border-0 py-1" style="font-size:13px">9℃</li>
+          <li class="list-group-item border-0 py-1"> 🌬️</li>
+          <li class="list-group-item border-0 py-1" style="font-size:13px">7m/s</li>
+        </ul>  
+      </div>
+      `} )
+
+// 4 assign value to element 
+  hourlyWeatherElement.innerHTML=hourlyWeatherElementHTML;
+   
+}
+//call function to make sure it works 
+displayHourlyWeather();
 
 function displayForecast(response){
     
@@ -52,7 +86,7 @@ function displayForecast(response){
                 alt="" 
                 class="float-left d-inline"
                 id = "main-icon"        
-                width ="36"
+                width ="60px"
               />     
               <div class="weather-forecast-temperatures mt-2">
                 <span class="weather-forecast-temperature-max">
@@ -71,12 +105,15 @@ function displayForecast(response){
     forecastElement.innerHTML=forecastHTML;
 
 }
+
+
  
 function getForecast(coordinates){
   
   let apiKey = "e9c021b631259222d3dcbc9761c3c90c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+
 }
 
 function displayTemperature(response){

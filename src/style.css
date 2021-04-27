@@ -11,7 +11,7 @@ h1 {
 }
 li {
   list-style: none;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 16px;
   font-weight: normal;
   color: #70757a;
@@ -20,6 +20,10 @@ ul {
   margin: 0;
   padding: 0;
 }
+a {
+  text-decoration: none;
+}
+
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -31,8 +35,8 @@ ul {
 }
 .weather-temperature img {
   margin-right: 5px;
-  width: 64px;
-  height: 64px;
+  width: 90px;
+  height: 90px;
   vertical-align: top;
 }
 .weather-temperature span {
@@ -43,9 +47,7 @@ ul {
   vertical-align: text-top;
   line-height: 60px;
 }
-a {
-  text-decoration: none;
-}
+
 #description {
   text-transform: capitalize;
 }
@@ -61,7 +63,7 @@ a {
 .forecast-column {
   width: 12%;
   margin-right: 5px;
-  background-color: #f8f9fa;
+  background-color: #e5f5f9;
   border-radius: 10px;
 }
 .forecast-day {
@@ -74,4 +76,13 @@ a {
 .weather-forecast-temperature-min {
   font-size: 13px;
   opacity: 0.6;
+}
+
+.hour {
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.byHour {
+  border-right: 1px solid #dee2e6;
 }
