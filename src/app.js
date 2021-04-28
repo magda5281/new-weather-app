@@ -64,19 +64,20 @@ function displayHourlyWeather(response){
     hourlyWeatherElementHTML =  hourlyWeatherElementHTML + `
     <div class="byHour col-2 border-end-1 " align="center">
         <ul class="list-unstyled ">
-          <li class="  py-1 hour " 
+          <li class=" hour " 
           style="font-size:16px"
           id="hour">
           ${formatHour(hourly.dt)}     
           </li>
            
-          <li class="  py-1">
+          <li>
           <img src="http://openweathermap.org/img/wn/${hourly.weather[0].icon}@2x.png" 
                 alt="" 
                 class="float-left d-inline"
                 id = "small-icon"        
                 width ="42px"
-              />      </li>
+              />
+            </li>
           <li class=" py-1" style="font-size:13px">
           <span>${Math.round(hourly.temp)}</span>℃</li>
           <li class=" py-2 "> 🌬️: <span style="font-size:13px ">${Math.round(hourly.wind_speed)} </span>m/s</li>
