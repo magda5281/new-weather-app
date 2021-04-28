@@ -25,45 +25,75 @@ function formatDate(timestamp){
 
 function formatDay(timestamp){
   let date = new Date(timestamp*1000);
-   let day = date.getDay();
+  let day = date.getDay();
   let days = ["Sun","Mon", "Tue","Wed","Thu","Fri","Sat"]
   return days[day];
 }
 
-//1 create a function responsible for displaying hourly weather 
-function displayHourlyWeather(){
-//2 select html element to disply hourly weather 
-  let hourlyWeatherElement = document.querySelector("#hourly-weather")
-//3 create empty variable that will hold html code 
-  let hourlyWeatherElementHTML ="";
-//5 create an array with hours you want to loop through 
-  let hours =["06:00", "10:00", "14:00","18:00","22:00", "02:00"];
-//6 loop through the arrey with for each function; and place the hourlyWeatherElementHTML is sent to function(hour)
-hours.forEach(function(hour) {
+function formatHour(timestamp){
+  let date = new Date (timestamp*1000);
+  let hour = date.getHours();
+  if (hour<10) { 
+  hour===`0${hour}`
+  }
+  
+  console.log(date.getHours
+    )
+  return `${hour}:00`;
 
+}
+//1 create a function responsible for displaying hourly weather 
+//2 select html element to disply hourly weather 
+//3 create empty variable that will hold html code 
 //4 place html code in new variable  
-  hourlyWeatherElementHTML =  hourlyWeatherElementHTML + `
+//5 create an array with hours you want to loop through 
+//6 loop through the arrey with for each function; and place the hourlyWeatherElementHTML is sent to function(hour)
+//7create variable to hold API response data
+
+
+
+function displayHourlyWeather(response){
+
+  let hourlyWeather = response.data.hourly;
+ console.log(hourlyWeather);
+
+  let hourlyWeatherElement = document.querySelector("#hourly-weather")
+
+  let hourlyWeatherElementHTML ="";
+
+  hourlyWeather.forEach(function(hourly,index) {
+  if (index===0 || index===4 || index===8 || index===12 || index===16 || index===20) {
+    hourlyWeatherElementHTML =  hourlyWeatherElementHTML + `
     <div class="byHour col-2 border-end-1" align="center">
         <ul class="list-unstyled list-group">
           <li class="list-group-item border-0 py-1 hour " 
           style="font-size:16px"
           id="hour">
-          ${hour}
+          ${formatHour(hourly.dt)}     
           </li>
-          <li class="list-group-item border-0 py-1"> ☀️</li>
-          <li class="list-group-item border-0 py-1" style="font-size:13px">9℃</li>
-          <li class="list-group-item border-0 py-1"> 🌬️</li>
-          <li class="list-group-item border-0 py-1" style="font-size:13px">7m/s</li>
+           
+          <li class="list-group-item border-0 py-1">
+          <img src="http://openweathermap.org/img/wn/${hourly.weather[0].icon}@2x.png" 
+                alt="" 
+                class="float-left d-inline"
+                id = "small-icon"        
+                width ="36px"
+              />      </li>
+          <li class="list-group-item border-0 py-1" style="font-size:13px">
+          <span>${Math.round(hourly.temp)}</span>℃</li>
+          <li class="list-group-item border-0"> 🌬️<span style="font-size:13px">${Math.round(hourly.wind_speed)} </span>m/s</li>
+          
         </ul>  
       </div>
-      `} )
+      `} 
+  })
+  
 
 // 4 assign value to element 
   hourlyWeatherElement.innerHTML=hourlyWeatherElementHTML;
    
 }
-//call function to make sure it works 
-displayHourlyWeather();
+
 
 function displayForecast(response){
     
@@ -108,11 +138,12 @@ function displayForecast(response){
 
 
  
-function getForecast(coordinates){
+function getCoordinates(coordinates){
   
   let apiKey = "e9c021b631259222d3dcbc9761c3c90c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then(displayHourlyWeather);
 
 }
 
@@ -138,7 +169,7 @@ mainIconElement.setAttribute("alt", response.data.weather[0].description);
 
 celciusTemperature = Math.round(response.data.main.temp);
 
-getForecast (response.data.coord);
+getCoordinates (response.data.coord);
 
 }
 
@@ -175,6 +206,7 @@ function dispalyFarenheitTemperature(event) {
     temperatureElement.innerHTML = farenheitTemperatureValue;
 }
 
+
 function retrieveCurrentLocation(position){
     // Storing Longitude and Latitude in variables
       let long = position.coords.longitude;
@@ -184,7 +216,6 @@ function retrieveCurrentLocation(position){
       let apiURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=${units}&appid=${apiKey}`;
       axios.get(apiURL).then(displayTemperature);
 }
-
 
 navigator.geolocation.getCurrentPosition(retrieveCurrentLocation);
 
