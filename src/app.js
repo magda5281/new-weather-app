@@ -36,10 +36,8 @@ function formatHour(timestamp){
   if (hour<10) { 
   hour===`0${hour}`
   }
-  
-  console.log(date.getHours
-    )
   return `${hour}:00`;
+
 
 }
 //1 create a function responsible for displaying hourly weather 
@@ -49,7 +47,6 @@ function formatHour(timestamp){
 //5 create an array with hours you want to loop through 
 //6 loop through the arrey with for each function; and place the hourlyWeatherElementHTML is sent to function(hour)
 //7create variable to hold API response data
-
 
 
 function displayHourlyWeather(response){
@@ -62,26 +59,27 @@ function displayHourlyWeather(response){
   let hourlyWeatherElementHTML ="";
 
   hourlyWeather.forEach(function(hourly,index) {
+    
   if (index===0 || index===4 || index===8 || index===12 || index===16 || index===20) {
     hourlyWeatherElementHTML =  hourlyWeatherElementHTML + `
-    <div class="byHour col-2 border-end-1" align="center">
-        <ul class="list-unstyled list-group">
-          <li class="list-group-item border-0 py-1 hour " 
+    <div class="byHour col-2 border-end-1 " align="center">
+        <ul class="list-unstyled ">
+          <li class="  py-1 hour " 
           style="font-size:16px"
           id="hour">
           ${formatHour(hourly.dt)}     
           </li>
            
-          <li class="list-group-item border-0 py-1">
+          <li class="  py-1">
           <img src="http://openweathermap.org/img/wn/${hourly.weather[0].icon}@2x.png" 
                 alt="" 
                 class="float-left d-inline"
                 id = "small-icon"        
                 width ="36px"
               />      </li>
-          <li class="list-group-item border-0 py-1" style="font-size:13px">
+          <li class=" py-1" style="font-size:13px">
           <span>${Math.round(hourly.temp)}</span>℃</li>
-          <li class="list-group-item border-0"> 🌬️<span style="font-size:13px">${Math.round(hourly.wind_speed)} </span>m/s</li>
+          <li class=" py-2"> 🌬️<span style="font-size:13px">${Math.round(hourly.wind_speed)} </span>m/s</li>
           
         </ul>  
       </div>
@@ -93,7 +91,6 @@ function displayHourlyWeather(response){
   hourlyWeatherElement.innerHTML=hourlyWeatherElementHTML;
    
 }
-
 
 function displayForecast(response){
     

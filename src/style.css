@@ -63,7 +63,8 @@ a {
 .forecast-column {
   width: 12%;
   margin-right: 5px;
-  background-color: #bed6f7;
+  background-color: #ccdefa;
+
   border-radius: 10px;
 }
 .forecast-day {
@@ -85,4 +86,7 @@ a {
 
 .byHour {
   border-right: 1px solid #dee2e6;
+}
+.byHour ul:last-child {
+  border-right: 0px;
 }
