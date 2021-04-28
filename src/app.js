@@ -75,15 +75,16 @@ function displayHourlyWeather(response){
                 alt="" 
                 class="float-left d-inline"
                 id = "small-icon"        
-                width ="36px"
+                width ="42px"
               />      </li>
           <li class=" py-1" style="font-size:13px">
           <span>${Math.round(hourly.temp)}</span>℃</li>
-          <li class=" py-2"> 🌬️<span style="font-size:13px">${Math.round(hourly.wind_speed)} </span>m/s</li>
+          <li class=" py-2 "> 🌬️: <span style="font-size:13px ">${Math.round(hourly.wind_speed)} </span>m/s</li>
           
         </ul>  
       </div>
-      `} 
+      `}  
+      
   })
   
 
@@ -115,7 +116,7 @@ function displayForecast(response){
                 id = "main-icon"        
                 width ="60px"
               />     
-              <div class="weather-forecast-temperatures mt-2">
+              <div class="weather-forecast-temperatures mb-2">
                 <span class="weather-forecast-temperature-max">
                   ${Math.round(forecastDay.temp.max)}º
                 </span>
