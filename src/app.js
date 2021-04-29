@@ -11,9 +11,10 @@ function formatDate(timestamp){
        let month=months[now.getMonth()];
 
        let year=now.getFullYear();
+
        let hours=now.getHours();
        if (hours<10) {
-           hours===`0${hours}`
+           hours===`0${hours}`;
        }
        let minutes=now.getMinutes();
        if (minutes<0) {
@@ -29,6 +30,8 @@ function formatDay(timestamp){
   let days = ["Sun","Mon", "Tue","Wed","Thu","Fri","Sat"]
   return days[day];
 }
+
+
 
 function formatHour(timestamp) {
   let date = new Date (timestamp*1000);
@@ -63,7 +66,6 @@ function displayHourlyWeather(response){
     <div class="byHour col-2 border-end-1 " align="center">
         <ul class="list-unstyled ">
           <li class=" hour " 
-          style="font-size:13px"
           id="hour">
           ${formatHour(hourly.dt)}     
           </li>
@@ -76,9 +78,9 @@ function displayHourlyWeather(response){
                 width ="42px"
               />
             </li>
-          <li class=" py-1" style="font-size:16px">
+          <li class=" py-1 hourlyTemp" >
           <span>${Math.round(hourly.temp)}</span>℃</li>
-          <li class=" py-2 "> 🌬️  <span style="font-size:13px">${Math.round(hourly.wind_speed)} </span>m/s</li>
+          <li class=" py-2 "> 🌬️  <span style="font-size:16px">${Math.round(hourly.wind_speed)} </span>m/s</li>
           
         </ul>  
       </div>
