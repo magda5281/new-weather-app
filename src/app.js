@@ -30,14 +30,13 @@ function formatDay(timestamp){
   return days[day];
 }
 
-function formatHour(timestamp){
+function formatHour(timestamp) {
   let date = new Date (timestamp*1000);
   let hour = date.getHours();
   if (hour<10) { 
-  hour===`0${hour}`
+  hour===`0${hour}:00`;
   }
-  return `${hour}:00`;
-
+  return `${hour}:00`;  
 
 }
 //1 create a function responsible for displaying hourly weather 
@@ -52,8 +51,7 @@ function formatHour(timestamp){
 function displayHourlyWeather(response){
 
   let hourlyWeather = response.data.hourly;
- console.log(hourlyWeather);
-
+ 
   let hourlyWeatherElement = document.querySelector("#hourly-weather")
 
   let hourlyWeatherElementHTML ="";
@@ -65,7 +63,7 @@ function displayHourlyWeather(response){
     <div class="byHour col-2 border-end-1 " align="center">
         <ul class="list-unstyled ">
           <li class=" hour " 
-          style="font-size:16px"
+          style="font-size:13px"
           id="hour">
           ${formatHour(hourly.dt)}     
           </li>
@@ -78,20 +76,17 @@ function displayHourlyWeather(response){
                 width ="42px"
               />
             </li>
-          <li class=" py-1" style="font-size:13px">
+          <li class=" py-1" style="font-size:16px">
           <span>${Math.round(hourly.temp)}</span>℃</li>
-          <li class=" py-2 "> 🌬️: <span style="font-size:13px ">${Math.round(hourly.wind_speed)} </span>m/s</li>
+          <li class=" py-2 "> 🌬️  <span style="font-size:13px">${Math.round(hourly.wind_speed)} </span>m/s</li>
           
         </ul>  
       </div>
-      `}  
-      
+      `}        
   })
   
-
 // 4 assign value to element 
-  hourlyWeatherElement.innerHTML=hourlyWeatherElementHTML;
-   
+  hourlyWeatherElement.innerHTML=hourlyWeatherElementHTML;  
 }
 
 function displayForecast(response){
@@ -105,8 +100,7 @@ function displayForecast(response){
     forecast.forEach(function(forecastDay, index) {
       if (index<6) {
       forecastHTML= forecastHTML+
-     `
-       
+     `       
             <div class="forecast-column col-2 p-0"align="center">
               <div class="forecast-day">
                 ${formatDay(forecastDay.dt)}
@@ -135,8 +129,6 @@ function displayForecast(response){
 
 }
 
-
- 
 function getCoordinates(coordinates){
   
   let apiKey = "e9c021b631259222d3dcbc9761c3c90c";
@@ -217,6 +209,7 @@ function retrieveCurrentLocation(position){
 }
 
 navigator.geolocation.getCurrentPosition(retrieveCurrentLocation);
+
 
 let celciusTemperature = null
 
