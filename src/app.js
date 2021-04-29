@@ -37,11 +37,12 @@ function formatHour(timestamp) {
   let date = new Date (timestamp*1000);
   let hour = date.getHours();
   if (hour<10) { 
-  hour===`0${hour}:00`;
+  hour =`0${hour}`;
   }
-  return `${hour}:00`;  
-
+  return `${hour}:00`;
 }
+
+
 //1 create a function responsible for displaying hourly weather 
 //2 select html element to disply hourly weather 
 //3 create empty variable that will hold html code 
@@ -225,6 +226,6 @@ let celciusLinkElement=document.querySelector("#celcius-link");
 celciusLinkElement.addEventListener("click", dispalyCelsiusTemperature);
 
 
-
+search("London");
   
 
